@@ -1,0 +1,25 @@
+---
+awsRegion: us-east-1
+
+awsAccessKeyId: ${AWS_ACCESS_KEY_ID}
+awsSecretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+
+dockerSecretName: awsecrlogin
+targetNamespace: "example"
+registries: https://aws-aacount-id.dkr.ecr.us-east-1.amazonaws.com
+
+cronjob:
+  schedule: "0 */6 * * *"
+
+names:
+  job: k8s-ecr-login-renew-job
+  cronJob: k8s-ecr-login-renew-cron
+  serviceAccount: k8s-ecr-login-renew-account
+  clusterRole: k8s-ecr-login-renew-role
+  clusterRoleBinding: k8s-ecr-login-renew-binding
+
+aws:
+  secretName: 'gke-pod-awskey'
+  secretKeys:
+    accessKeyId: 'AWS_ACCESS_KEY_ID'
+    secretAccessKey: 'AWS_SECRET_ACCESS_KEY'
